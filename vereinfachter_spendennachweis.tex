@@ -1,0 +1,80 @@
+
+\documentclass[12pt,tikz]{dinbrief}
+\usepackage{german}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+\setmainfont{Raleway}
+\setmonofont{Consolas}
+\usepackage{pdfpages}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\address{HaSi e.V.\\
+Effertsufer 104\\
+57072 Siegen}
+\backaddress{HaSi e.V., Effertsufer 104, 57072 Siegen}
+\signature{Julian Dax}
+\place{Siegen}
+
+\newlength{\UKAwd}
+\newlength{\ADDRwd}
+
+\def\briefkopf{
+\settowidth{\UKAwd}{HaSi e.V.}
+\settowidth{\ADDRwd}{----------------------}
+\vspace*{7truemm}
+\raisebox{-11.3mm}{%
+\setlength{\unitlength}{1truemm}
+
+}
+{\hspace{.7em}}
+\parbox[t]{\UKAwd}{
+  \includepdf[pages={1},scale=0.685,offset=-118 350]{logo.pdf}
+}
+\hfill
+\parbox[t]{\ADDRwd}{
+HaSi e.V.\\
+Effertsufer 104\\
+57072 Siegen\\
+kontakt@hasi.it \\
+www.hasi.it \\
+} }
+\signature{Felix Potthast, Julian Dax}
+\place{Siegen}
+\address{\briefkopf}
+
+
+
+\begin{document}
+
+\begin{letter}{}
+
+% Commerzbank Siegen\\
+% Bahnhofstr. 2\\
+% 57072 Siegen\\
+% [\medskipamount]
+% {\bf z.Hd. Stefanie Faßbender}}
+% \yourmail{}
+% \phone{015904485699}
+% \sign{h4-s1}
+
+
+\subject{\textbf{Bestätigung über Zuwendungen zur Vorlage beim Finanzamt}}
+
+\nowindowrules
+\opening{}
+
+Der HaSi e.V., Effertsufer 104, 57072 Siegen ist nach dem letzten uns zugegangenen Bescheid vom 26.01.2017 des Finanzamtes Siegen, Siegen, Steuer-Nr. 342/5926/4204 gemäß § 5 Abs.1 Nr. 9 KStG von der Körperschaftsteuer und nach § 3 Nr. 6 GewStG von der Gewerbesteuer befreit.
+
+
+Spenden an den HaSi e.V. sind gemäß § 10 b Abs. 1 EStG steuerlich abzugsfähig. Wir bestätigen, dass die Zuwendung nur zur Förderung gemeinnütziger Zwecke im Sinne §§ 51 ff. AO verwendet wird. Dieser Beleg gilt bis 200,-Euro in Verbindung mit Ihrem Einzahlungsbeleg/Kontoauszug als Spendennachweis.
+
+\textbf{Wir danken für Ihre Spende.}
+
+--- HaSi e.V.
+
+
+
+\end{letter}
+\end{document}
