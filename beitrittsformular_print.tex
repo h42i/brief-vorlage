@@ -1,0 +1,90 @@
+\documentclass[a4paper]{article}
+\usepackage{geometry}
+\usepackage{german}
+\usepackage[T1]{fontenc}
+\usepackage[default]{raleway}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage[symbol]{footmisc}
+\usepackage{amssymb}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\pagestyle{fancy}
+\lhead{\includegraphics[scale=0.3,trim={5.5cm 16.5cm 5.5cm 16.5cm},clip]{logo.pdf}}
+\rhead{HaSi e.V.\\ Effertsufer 104\\ 57072 Siegen\\ Gläubiger-Identiﬁkationsnummer:\\ DE27ZZZ00001247194\\ IBAN: DE70460500010001270123 }
+\cfoot{}
+\setlength{\headheight}{60pt}
+\setlength\parindent{0pt}
+
+\renewcommand\LayoutTextField[2]{#1  \raisebox{-.30\baselineskip}{#2}}
+\renewcommand\LayoutCheckField[2]{#1 \raisebox{-.30\baselineskip}{#2}}
+
+\renewcommand{\headrulewidth}{0pt} %keine Trennlinie
+
+\newcommand{\lowerElement}[1] {
+    \raisebox{-.30\baselineskip}{#1}
+}
+\renewcommand{\MakeTextField}[2]{{\vbox to #2{\vfill\hbox to #1{\hrulefill}}}}
+
+\setlength{\extrarowheight}{5pt}
+
+\begin{document}
+    \subsection*{Beitrittserklärung HaSi e.V.}
+    \subsubsection*{Persönliche Daten}
+    \begin{Form}[]
+        \begin{tabularx}{\textwidth}{>{\hsize=.5\hsize}X  X}
+            Name:           & \hrulefill \\
+            E-Mail Adresse: & \hrulefill \\
+            Strasse * : & \hrulefill \\
+            PLZ * :           & \hrulefill \\
+            Ort * :           & \hrulefill \\
+        \end{tabularx}
+    \end{Form}\\
+
+    * Wird nur benötigt, wenn du eine jährliche Spendenbescheinigung wünschst und mehr als 300 € pro Jahr an das Hasi zahlst.
+
+    \subsubsection*{Art der Mitgliedschaft}
+    \begin{Form}[]
+        \begin{tabularx}{\textwidth}{>{\hsize=.5\hsize}X   X}
+            Regulär: & $\square$ 13,37 € im Monat \\
+            Ermäßigt: & $\square$ 8,00 € im Monat \\
+            Fördermitglied: & $\square$ 5,00 € im Monat
+        \end{tabularx}
+    \end{Form}
+    \subsubsection*{Bezahlung}
+    \begin{Form}[]
+      \begin{tabularx}{\textwidth}{>{\raggedleft\arraybackslash} l l }
+        Ich richte einen Dauerauftrag ein & $\square$ \\
+        Ich möchte per Lastschrift bezahlen & $\square$
+      \end{tabularx}
+    \end{Form}
+
+    \vspace{1.5cm}
+    \noindent\rule{\textwidth}{1pt}
+    Datum \hspace{1.5cm} Unterschrift AntragsstellerIn
+
+    \subsection*{SEPA-Lastschriftmandat}
+    \textbf{Nur ausfüllen, wenn Lastschrift gewünscht ist!}
+
+    Hiermit ermächtige ich den HaSi e.V., den Mitgliedsbeitrag abzubuchen.
+    Diese Erklürung ersetzt ggf. vorher für diesen Zweck abgegebene Einzugsermächtigungen.\\
+
+    \begin{Form}[]
+      \begin{tabularx}{\textwidth}{p{3.2cm}  p{8.3cm}}
+          KontoinhaberIn: & \hrulefill \\
+          IBAN: & \hrulefill
+      \end{tabularx}
+    \end{Form}
+    \\
+    Die Mitgliedsbeiträge werden quartalsweise im Vorhinein abgebucht.
+
+    \vspace{1.5cm}
+
+    \noindent\rule{\textwidth}{1pt}
+    Datum \hspace{1.5cm} Unterschrift KontoinhaberIn
+
+
+\end{document}

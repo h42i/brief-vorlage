@@ -4,15 +4,26 @@
 \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
 \setmainfont{Raleway}
 \usepackage{hyperref}
-\usepackage{booktabs}
 \usepackage{pdfpages}
 \usepackage{fancyhdr}
+\usepackage{tabularx}
 
 \pagestyle{fancy}
 \lhead{\includegraphics[scale=0.2,trim={5.5cm 16.5cm 5.5cm 16.5cm},clip]{logo.pdf}}
 \rhead{HaSi e.V.\\ Effertsufer 104\\ 57072 Siegen}
 \cfoot{}
+\setlength{\headheight}{42pt} 
+
+\renewcommand\LayoutTextField[2]{#1  \raisebox{-.30\baselineskip}{#2}}
+\renewcommand\LayoutCheckField[2]{#1 \raisebox{-.30\baselineskip}{#2}}
+
 \renewcommand{\headrulewidth}{0pt} %keine Trennlinie
+
+\newcommand{\lowerElement}[1] {
+  \raisebox{-.30\baselineskip}{#1}  
+}
+
+
 
 \begin{document}
 \hspace{1cm}
@@ -21,53 +32,64 @@
 
 \subsection*{Persönliche Daten}
 \begin{Form}[]
-\begin{tabular}{@{}p{11.5cm}@{}}
-Vor- und Nachname \TextField[name=Vor- und Nachname, width=11cm, borderwidth=1]{}\\\midrule[0.5pt]
-Vor- und Nachname\\[2.5ex]
-
-\TextField[name=Hasi-Nummer, width=11cm, borderwidth=1]{}\\\midrule[0.5pt]
-Hasi-Nummer (falls Mitglied)\\[2.5ex]
-\TextField[name=IBAN, width=11cm, borderwidth=1]{}\\\midrule[0.5pt]
-IBAN\\[2.5ex]
-\TextField[name=Name der Bank, width=11cm, borderwidth=1]{}\\\midrule[0.5pt]
-Name der Bank\\[2.5ex]
-
-\end{tabular}
+\begin{tabularx}{\textwidth}{p{3.2cm}  p{8.3cm}}
+Vor- und Nachname: & \TextField[name=name,width=8.2cm, bordercolor=0 0 0]{}\\
+IBAN: & \TextField[name=IBAN, width=8.2cm, bordercolor=0 0 0]{}\\
+Name der Bank: &  \TextField[name=bankname, width=8.2cm, bordercolor=0 0 0]{}\\
+Hasi-Nummer: &  \TextField[name=nummer, width=8.2cm, bordercolor=0 0 0]{} \\
+\end{tabularx}
 \end{Form}
-\subsection*{Reise-Deteils}
+
+\subsection*{Reise-Details}
 \begin{Form}[]
-\begin{tabular}{@{}p{11.5cm}@{}}
-\TextField[name=ReiseBeginn, width=5cm, borderwidth=1]{}
-\TextField[name=ReiseEnde, width=5cm, borderwidth=1]{}
-\\\midrule[0.5pt]
-Beginn (Datum) \hspace{3cm} Ende (Datum, falls Reise länger als einen Tag)\\[2.5ex]
-\TextField[name=Ziel, width=11cm, borderwidth=1]{}\\\midrule[0.5pt]
-Ziel (Name der Stadt)\\[2.5ex]
-\TextField[name=Anlass, width=11cm, borderwidth=1]{}\\\midrule[0.5pt]
-Anlass (z.B. Name der Veranstaltung)\\[2.5ex]
-\TextField[name=Genutztes Verkehrsmittel, width=5cm, borderwidth=1]{}
-\TextField[name=ReiseEnde, width=5cm, borderwidth=1]{}
-\\\midrule[0.5pt]
-Genutztes Verkehrsmittel\hspace{1.7cm} Falls Auto, gefahrene Kilometer\\[2.5ex]
-\TextField[name=Betrag, width=11cm, borderwidth=1]{}\\\midrule[0.5pt]
-Zu erstattender Betrag (EUR)\\[2.5ex]
-\end{tabular}
+\begin{tabularx}{\textwidth}{p{3.2cm} p{3.2cm} p{.95cm} p{3.2cm} }
+Beginn: & 
+\TextField[name=ReiseBeginn, bordercolor=0 0 0, value=Datum, width=3.2cm]{} &
+Ende: &
+\TextField[name=ReiseEnde, bordercolor=0 0 0, value=Datum, width=3.2cm]{} \\
+\end{tabularx}
+\begin{tabularx}{\textwidth}{p{3.2cm}  p{8.3cm}}
+Start: & \TextField[name=ReiseStart, bordercolor=0 0 0, value={Name der Stadt}, width=8.2cm]{} \\
+Ziel: & \TextField[name=ReiseZiel, bordercolor=0 0 0, value={Name der Stadt},width=8.2cm]{} \\
+Anlass: & \TextField[name=Anlass, bordercolor=0 0 0, value={z.B. Name Veranstaltung},width=8.2cm]{} \\
+Entfernung: & \TextField[name=Anlass, bordercolor=0 0 0, value={Entfernung in Km},width=8.2cm]{}\\
+\end{tabularx}
+\begin{tabularx}{\textwidth}{p{3.2cm} p{2cm} p{3.2cm}  }
+Verkehrsmittel: & 
+Auto \CheckBox[name=member, bordercolor=black]{} &
+ÖPNV \CheckBox[name=member, bordercolor=black]{} \\
+\end{tabularx}
 \end{Form}
 
-Falls du mit ÖPNV gefahren bist, lege bitte deine Fahrkarte bei. Wenn du mit dem
-eigenen Auto gefahren bist, gib bitte die Entfernung an. (Tank-Quittung ist
-nicht notwendig.) \\\bf{Das HaSi erstattet Fahrtkosten bis max. 50 EUR.}
-\\
+\subsection*{Erstattung}
 \begin{Form}[]
-\begin{tabular}{@{}p{11.5cm}@{}}
-\\
-\\
-
-\\\midrule[0.5pt]
-Datum \hspace{1.5cm} Unterschrift Vorstand \hspace{1.5cm} Unterschrift Reisende/r
-
-\end{tabular}
+\begin{tabularx}{\textwidth}{p{3.2cm}  p{8.3cm}}
+Betrag: & \TextField[name=Betrag, bordercolor=0 0 0, width=8.2cm]{}
+\end{tabularx}
 \end{Form}
+
+\noindent Der zu erstattende Betrag berechnet sich wie folgt:
+\begin{itemize}
+\item Bei ÖPNV: Summe der Kosten der Fahrkarten, \bf{maximal aber 50 €}.
+\item Bei Auto: 0,25 € pro gefahrenem Km, \bf{maximal aber 50 €}.
+\end{itemize}
+
+
+\noindent Falls du mit ÖPNV gefahren bist, lege bitte deine Fahrkarten bei. Wenn du mit dem
+eigenen Auto gefahren bist, ist eine Tank-Quittung \bf{nicht} notwendig.
+\vspace{2.5cm}
+
+\noindent\rule{\textwidth}{1pt}
+Datum \hspace{1.5cm} Unterschrift Resende/r
+\vspace{2.5cm}
+
+\noindent\rule{\textwidth}{1pt}
+Datum \hspace{1.5cm} Unterschrift Vorstand
+
+
+
+
+
 
 
 
